@@ -1,4 +1,4 @@
-package com.aj.test;
+package com.aj.test.beanDefinition;
 
 import org.springframework.stereotype.Component;
 
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
  * @author Jun.An3
  * @date 2022/03/08
  */
-@Component("c")
-public class BeanC {
+@Component("b")
+public class BeanB {
 
-	public BeanC() {
-		System.out.println("BeanC创建" + this);
+	public BeanB() {
+		System.out.println("BeanB()");
 	}
 
 	private Long a;

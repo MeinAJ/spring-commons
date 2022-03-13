@@ -1,4 +1,4 @@
-package com.aj.test;
+package com.aj.test.beanDefinition;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -7,16 +7,14 @@ import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.stereotype.Component;
 
 /**
- * com.aj.test1.Test1
- *
  * @author Jun.An3
  * @date 2022/03/07
  */
 @Component
 public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
-	public CustomBeanFactoryPostProcessor(){
-		System.out.println("Test1创建");
+	public CustomBeanFactoryPostProcessor() {
+		System.out.println("CustomBeanFactoryPostProcessor()");
 	}
 
 	@Override
@@ -24,7 +22,7 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
 		final AbstractBeanDefinition beanDefinition = (AbstractBeanDefinition) beanFactory.getBeanDefinition("a");
 		final int autowireMode = beanDefinition.getAutowireMode();
 		System.out.println(autowireMode);
-		beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+		beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
 	}
 
 }

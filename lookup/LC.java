@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component("lc")
 @Slf4j(topic = "e")
-public abstract class LC {
+public class LC {
 
-	public void  printInfo() {
+	public void printInfo() {
 		LB lb = createb();
 		log.debug("lb-[{}]", lb);
 		lb = createb();
@@ -16,6 +16,8 @@ public abstract class LC {
 	}
 
 	@Lookup
-	public abstract LB createb();
+	public LB createb() {
+		return null;
+	}
 
 }

@@ -5,7 +5,7 @@
 
 package com.aj.test.mybatis;
 
-import com.aj.test.mybatis.mapper.MybatisMapper;
+import com.aj.test.mybatis.mapper.MybatisTestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class MybatisTest {
 
 	@Autowired
-	private MybatisMapper mybatisMapper;
+	private MybatisTestMapper mybatisMapper;
 
 	public void test(){
 		mybatisMapper.print();

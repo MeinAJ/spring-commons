@@ -1,6 +1,6 @@
 package com.aj.test.mybatis;
 
-import com.aj.test.mybatis.annotation.Update;
+import com.aj.test.mybatis.annotation.MybatisUpdate;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.core.annotation.AnnotationUtils;
 import java.lang.reflect.InvocationHandler;
@@ -33,7 +33,7 @@ public class MybatisFactoryBean implements FactoryBean {
 					System.err.println("代理方法：" + interfacz.getName());
 					final Method[] methods = interfacz.getMethods();
 					for (Method mapperMethod : methods) {
-						final Update annotation1 = AnnotationUtils.findAnnotation(mapperMethod, Update.class);
+						final MybatisUpdate annotation1 = AnnotationUtils.findAnnotation(mapperMethod, MybatisUpdate.class);
 						System.err.println("update value:" + annotation1.value());
 					}
 					return null;

@@ -1,7 +1,7 @@
 package com.aj.test.mybatis;
 
+import com.aj.test.mybatis.annotation.MybatisMapper;
 import com.aj.test.mybatis.annotation.MybatisScan;
-import com.aj.test.mybatis.mapper.MybatisMapper;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -27,9 +27,9 @@ public class MybatisImportBeanDefinitionRegistrar implements ImportBeanDefinitio
 			Object value = annotationAttributes.get("value");
 			if (value != null) {
 				String mapperPath = (String) value;
-				final Set<Class<?>> classes = ClassUtils.getClasses(mapperPath);
+				final Set<Class<?>> classes = MybatisClassUtils.getClasses(mapperPath);
 				for (Class<?> aClass : classes) {
-					if (aClass.getName().toLowerCase().endsWith("mapper") && aClass.isInterface()) {
+					if (aClass.isInterface() && aClass.getAnnotation(MybatisMapper.class) != null) {
 						registerBeanDefinition(registry, aClass);
 					}
 				}

@@ -1,12 +1,13 @@
 package com.aj.test.mybatis;
 
-import com.aj.test.mybatis.mapper.Update;
+import com.aj.test.mybatis.annotation.MybatisScan;
+import com.aj.test.mybatis.mapper.MybatisMapper;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.type.AnnotationMetadata;
-import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,12 +22,6 @@ public class MybatisImportBeanDefinitionRegistrar implements ImportBeanDefinitio
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry,
 										BeanNameGenerator importBeanNameGenerator) {
-//		final BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition();
-//		final AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
-//		beanDefinition.setBeanClass(MybatisFactoryBeanPlus1.class);
-//		beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(MybatisMapper.class);
-//		registry.registerBeanDefinition(MybatisMapper.class.getSimpleName(), beanDefinition);
-
 		final Map<String, Object> annotationAttributes = importingClassMetadata.getAnnotationAttributes(MybatisScan.class.getName());
 		if (annotationAttributes != null) {
 			Object value = annotationAttributes.get("value");
@@ -34,21 +29,24 @@ public class MybatisImportBeanDefinitionRegistrar implements ImportBeanDefinitio
 				String mapperPath = (String) value;
 				final Set<Class<?>> classes = ClassUtils.getClasses(mapperPath);
 				for (Class<?> aClass : classes) {
-
 					if (aClass.getName().toLowerCase().endsWith("mapper") && aClass.isInterface()) {
-						System.err.println(aClass.getName());
-
-						final Method[] methods = aClass.getMethods();
-						for (Method method : methods) {
-
-							final Update annotation1 = AnnotationUtils.findAnnotation(method, Update.class);
-							System.err.println("update value:" + annotation1.value());
-
-						}
+						registerBeanDefinition(registry, aClass);
 					}
 				}
 			}
 		}
+	}
+
+	private void registerBeanDefinition(BeanDefinitionRegistry registry, Class<?> clazz) {
+		if (clazz == null) {
+			throw new NullPointerException("clazz为空");
+		}
+		final BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition();
+		final AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
+		beanDefinition.setBeanClass(MybatisFactoryBean.class);
+		beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(clazz);
+		System.out.println(clazz.getSimpleName());
+		registry.registerBeanDefinition("mybatis" + clazz.getSimpleName(), beanDefinition);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.aj.test;
 
+import com.aj.test.mybatis.MybatisTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -25,7 +26,8 @@ public class Main {
 //		System.out.println(context.getBean("&mybatisFactoryBean"));
 //		System.out.println(context.getBean("mybatisFactoryBean"));
 //		System.out.println(context.getBean("mybatisFactoryBean").getClass());
-
+		MybatisTest bean = context.getBean(MybatisTest.class);
+		bean.test();
 		context.close();
 	}
 

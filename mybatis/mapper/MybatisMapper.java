@@ -1,5 +1,7 @@
 package com.aj.test.mybatis.mapper;
 
+import com.aj.test.mybatis.annotation.Update;
+
 /**
  * MybatisMapper
  *
@@ -9,6 +11,6 @@ package com.aj.test.mybatis.mapper;
 public interface MybatisMapper {
 
 	@Update(value = "select * from t_user")
-	void update();
+	void print();
 
 }

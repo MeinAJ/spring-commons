@@ -1,5 +1,7 @@
 package com.aj.test.mybatis;
 
+import com.aj.test.mybatis.annotation.MybatisScan;
+
 /**
  * MybatisConfig
  *

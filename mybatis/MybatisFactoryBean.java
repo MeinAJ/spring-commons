@@ -1,8 +1,8 @@
 package com.aj.test.mybatis;
 
-import com.aj.test.mybatis.mapper.MybatisMapper;
+import com.aj.test.mybatis.annotation.Update;
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.stereotype.Component;
+import org.springframework.core.annotation.AnnotationUtils;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -13,19 +13,29 @@ import java.lang.reflect.Proxy;
  * @author Jun.An3
  * @date 2022/03/17
  */
-//@Component
 public class MybatisFactoryBean implements FactoryBean {
 
-	@Override
-	public Object getObject() throws Exception {
+	private final Class interfacz;
 
-		return Proxy.newProxyInstance(MybatisFactoryBean.class.getClassLoader(), new Class[]{MybatisMapper.class}, new InvocationHandler() {
+	public MybatisFactoryBean(Class clazz) {
+		this.interfacz = clazz;
+	}
+
+	@Override
+	public Object getObject() {
+
+		return Proxy.newProxyInstance(MybatisFactoryBean.class.getClassLoader(), new Class[]{this.interfacz}, new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				if (Object.class.equals(method.getDeclaringClass())) {
 					return method.invoke(this, args);
 				} else {
-					method.invoke(this, args);
+					System.err.println("代理方法：" + interfacz.getName());
+					final Method[] methods = interfacz.getMethods();
+					for (Method mapperMethod : methods) {
+						final Update annotation1 = AnnotationUtils.findAnnotation(mapperMethod, Update.class);
+						System.err.println("update value:" + annotation1.value());
+					}
 					return null;
 				}
 			}
@@ -34,7 +44,7 @@ public class MybatisFactoryBean implements FactoryBean {
 
 	@Override
 	public Class<?> getObjectType() {
-		return MybatisMapper.class;
+		return this.interfacz;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.aj.test.mybatis;
 
+import com.aj.test.mybatis.mapper.MybatisMapper;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationHandler;
@@ -12,7 +13,7 @@ import java.lang.reflect.Proxy;
  * @author Jun.An3
  * @date 2022/03/17
  */
-@Component
+//@Component
 public class MybatisFactoryBean implements FactoryBean {
 
 	@Override

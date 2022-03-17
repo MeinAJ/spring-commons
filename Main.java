@@ -26,8 +26,6 @@ public class Main {
 //		System.out.println(context.getBean("mybatisFactoryBean"));
 //		System.out.println(context.getBean("mybatisFactoryBean").getClass());
 
-		context.register();
-
 		context.close();
 	}
 

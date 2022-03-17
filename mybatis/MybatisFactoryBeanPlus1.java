@@ -12,7 +12,7 @@ import java.lang.reflect.Proxy;
  * @author Jun.An3
  * @date 2022/03/17
  */
-@Component
+//@Component
 public class MybatisFactoryBeanPlus1 implements FactoryBean {
 
 	private final Class interfacz;

@@ -1,40 +1,23 @@
-package com.aj.test.beanDefinition;
+/*
+ * Copyright (c) 2019, ABB and/or its affiliates. All rights reserved.
+ * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+
+package com.aj.test.beandefinition;
 
 import org.springframework.stereotype.Component;
 
 /**
- * A
+ * BeanA
  *
  * @author Jun.An3
- * @date 2022/03/08
+ * @date 2022/03/12
  */
 @Component("a")
 public class BeanA {
 
-	private BeanB beanB;
-
 	public BeanA() {
 		System.out.println("BeanA()");
-	}
-
-	public BeanA(BeanB beanB){
-		this.beanB = beanB;
-		System.out.println("BeanA(BeanB beanB)");
-	}
-
-	public void setB(BeanB beanB){
-		this.beanB = beanB;
-		System.out.println("setB(BeanB beanB)");
-	}
-
-	private Long a;
-
-	public Long getA() {
-		return a;
-	}
-
-	public void setA(Long a) {
-		this.a = a;
 	}
 
 }

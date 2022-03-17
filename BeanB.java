@@ -3,7 +3,7 @@
  * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
-package com.aj.test.dependson;
+package com.aj.test;
 
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;

@@ -21,8 +21,12 @@ public class MybatisTest {
 	@Autowired
 	private MybatisTestMapper mybatisMapper;
 
-	public void test(){
-		mybatisMapper.print();
+	public void test() {
+		String result = mybatisMapper.print();
+		System.err.println("result-----------" + result);
+
+		result = mybatisMapper.print();
+		System.err.println("result-----------" + result);
 	}
 
 }

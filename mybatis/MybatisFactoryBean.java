@@ -35,8 +35,9 @@ public class MybatisFactoryBean implements FactoryBean {
 					for (Method mapperMethod : methods) {
 						final MybatisUpdate annotation1 = AnnotationUtils.findAnnotation(mapperMethod, MybatisUpdate.class);
 						System.err.println("update value:" + annotation1.value());
+						//sql拿到了，还需要拿到sqlSession，拼接sql，执行了sql还要拿到结果，并将结果放回对象中
 					}
-					return null;
+					return this.getClass().hashCode() + "";
 				}
 			}
 		});

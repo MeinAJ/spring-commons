@@ -45,7 +45,7 @@ public class MybatisImportBeanDefinitionRegistrar implements ImportBeanDefinitio
 		final AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
 		beanDefinition.setBeanClass(MybatisFactoryBean.class);
 		beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(clazz);
-		System.out.println(clazz.getSimpleName());
+		System.err.println(clazz.getSimpleName());
 		registry.registerBeanDefinition("mybatis" + clazz.getSimpleName(), beanDefinition);
 	}
 

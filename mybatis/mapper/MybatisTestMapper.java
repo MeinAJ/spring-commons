@@ -13,6 +13,6 @@ import com.aj.test.mybatis.annotation.MybatisUpdate;
 public interface MybatisTestMapper {
 
 	@MybatisUpdate(value = "select * from t_user")
-	void print();
+	String print();
 
 }

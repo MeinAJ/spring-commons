@@ -12,7 +12,7 @@ import com.aj.test.mybatis.annotation.MybatisScan;
 public class MybatisConfig {
 
 	public MybatisConfig() {
-		System.out.println("MybatisConfig()");
+		System.err.println("MybatisConfig()");
 	}
 
 }

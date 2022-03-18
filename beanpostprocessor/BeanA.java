@@ -3,9 +3,8 @@
  * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
-package com.aj.test.beandefinition;
+package com.aj.test.beanpostprocessor;
 
-import com.aj.test.order.BaseBean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,11 +13,11 @@ import org.springframework.stereotype.Component;
  * @author Jun.An3
  * @date 2022/03/12
  */
-@Component("c")
-public class BeanC extends BaseBean {
+@Component("a")
+public class BeanA {
 
-	public BeanC() {
-		System.out.println("BeanC()");
+	public BeanA() {
+		System.err.println("BeanA()");
 	}
 
 }

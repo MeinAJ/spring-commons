@@ -3,7 +3,7 @@
  * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
-package com.aj.test.beanDefinition;
+package com.aj.test.beandefinition;
 
 import org.springframework.stereotype.Component;
 

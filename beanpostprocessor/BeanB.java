@@ -3,27 +3,25 @@
  * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
-package com.aj.test.dependson;
+package com.aj.test.beanpostprocessor;
 
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
-import javax.annotation.PostConstruct;
 
 /**
+ * BeanA
+ *
  * @author Jun.An3
  * @date 2022/03/12
  */
-@DependsOn(value = "a")
 @Component("b")
 public class BeanB {
 
 	public BeanB() {
-		System.out.println("BeanB()");
+		System.err.println("BeanB()");
 	}
 
-	@PostConstruct
-	public void init() {
-		System.out.println("BeanB#init()");
+	public void print() {
+		System.err.println("BeanB#print()");
 	}
 
 }

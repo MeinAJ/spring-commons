@@ -5,8 +5,13 @@
 
 package com.aj.test.beanpostprocessor;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * BeanA
@@ -15,14 +20,26 @@ import javax.annotation.PostConstruct;
  * @date 2022/03/12
  */
 @Component("a")
-public class BeanA {
+public class BeanA implements ApplicationContextAware, InitializingBean {
 
-	public BeanA() {
-		System.err.println("BeanA()");
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.err.println("BeanA#afterPropertiesSet");
 	}
 
 	@PostConstruct
-	public void initMethods(){
-		System.err.println("BeanA#@PostConstruct");
+	public void initMethod() {
+		System.err.println("BeanA#initMethod()");
 	}
+
+	@PreDestroy
+	public void destroy() {
+		System.err.println("BeanA#destroy()");
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.err.println("BeanA#setApplicationContext");
+	}
+
 }

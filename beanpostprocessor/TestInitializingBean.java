@@ -5,9 +5,9 @@
 
 package com.aj.test.beanpostprocessor;
 
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-import javax.annotation.PostConstruct;
 
 /**
  * TestInitializingBean
@@ -16,16 +16,20 @@ import javax.annotation.PostConstruct;
  * @date 2022/03/19
  */
 @Component
-public class TestInitializingBean implements InitializingBean {
+public class TestInitializingBean implements BeanPostProcessor {
 
-	@PostConstruct
-	public void initMethod(){
-		System.out.println("TestInitializingBean#initMethod()");
+	@Override
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.err.println("#postProcessBeforeInitialization");
+		System.err.println(beanName);
+		return bean;
 	}
 
 	@Override
-	public void afterPropertiesSet() throws Exception {
-		System.err.println("TestInitializingBean#afterPropertiesSet");
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		System.err.println("#postProcessAfterInitialization");
+		System.err.println(beanName);
+		return bean;
 	}
 
 }

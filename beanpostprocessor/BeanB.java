@@ -16,12 +16,4 @@ import org.springframework.stereotype.Component;
 @Component("b")
 public class BeanB {
 
-	public BeanB() {
-		System.err.println("BeanB()");
-	}
-
-	public void print() {
-		System.err.println("BeanB#print()");
-	}
-
 }

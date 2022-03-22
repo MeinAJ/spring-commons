@@ -18,6 +18,7 @@ public class MybatisFactoryBean implements FactoryBean {
 	private final Class interfacz;
 
 	public MybatisFactoryBean(Class clazz) {
+		System.err.println("clazz:" + clazz);
 		this.interfacz = clazz;
 	}
 

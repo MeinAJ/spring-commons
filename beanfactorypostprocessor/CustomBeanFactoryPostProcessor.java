@@ -22,8 +22,12 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
 		final AbstractBeanDefinition beanDefinition = (AbstractBeanDefinition)
 				beanFactory.getBeanDefinition("a");
 		final int autowireMode = beanDefinition.getAutowireMode();
-		System.err.println(autowireMode);
+		System.err.println("a#autowireMode修改前:" + autowireMode);
 		beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
+		System.err.println("a#autowireMode修改后:" + beanDefinition.getAutowireMode());
+
+		final String scope = beanDefinition.getScope();
+		System.err.println("a#scope修改前:" + scope);
 	}
 
 }

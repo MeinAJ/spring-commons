@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Jun.An3
  * @date 2022/03/12
  */
-@Configuration
+//@Configuration
 public class Config {
 
 	@Bean

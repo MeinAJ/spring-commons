@@ -3,9 +3,7 @@
  * ABB PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
-package com.aj.test.autowired;
-
-import org.springframework.stereotype.Component;
+package com.aj.test.cglib;
 
 /**
  * BeanA
@@ -13,11 +11,7 @@ import org.springframework.stereotype.Component;
  * @author Jun.An3
  * @date 2022/03/12
  */
-//@Component("c")
-public class BeanC {
+public class BeanA {
 
-	public BeanC() {
-		System.out.println("BeanC()");
-	}
 
 }

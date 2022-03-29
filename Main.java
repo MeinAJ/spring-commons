@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author Jun.An3
  * @date 2022/03/07
  */
-@ComponentScan(basePackages = "com.aj.test.beanpostprocessor")
+@ComponentScan(basePackages = "com.aj.test.cglib")
 public class Main {
 
 	public static void main(String[] args) {
@@ -28,8 +28,8 @@ public class Main {
 //		System.out.println(context.getBean("mybatisFactoryBean"));
 //		System.out.println(context.getBean("mybatisFactoryBean").getClass());
 
-		MybatisTest bean = context.getBean(MybatisTest.class);
-		bean.test();
+//		MybatisTest bean = context.getBean(MybatisTest.class);
+//		bean.test();
 
 		context.close();
 	}
